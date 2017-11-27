@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+    <link rel="stylesheet" type="text/css" href="/004/js/jquery-easyui-1.4/themes/default/easyui.css">
+	<link rel="stylesheet" type="text/css" href="/004/js/jquery-easyui-1.4/themes/icon.css">
+   <link rel="stylesheet" type="text/css" href="/004/js/demo.css">
+	<script type="text/javascript" src="/004/js/jquery-easyui-1.4/jquery.min.js"></script>
+	<script type="text/javascript" src="/004/js/jquery-easyui-1.4/jquery.easyui.min.js"></script>
+</head>
+ <script type="text/javascript">
+        $(function () {
+            $("#txtDate").datebox({
+                required: "true",
+                missingMessage: "必填项",
+                formatter: function (date) {
+                    var y = date.getFullYear();
+                    var m = date.getMonth() + 1;
+                    var d = date.getDate();
+                    return y + "年" + (m < 10 ? ("0" + m) : m) + "月" + (d < 10 ? ("0" + d) : d) + "日";
+                }
+            });
+        });
+    </script>
+<body>
+<h2>Validate Form on Submit</h2>
+	<p>The form does not perform validation before being submitted.</p>
+	<div style="margin:20px 0;"></div>
+	<div class="easyui-panel" title="New Topic" style="width:400px">
+		<div style="padding:10px 60px 20px 60px">
+	    <form  id="ff"  class="easyui-form" method="post" >
+	    	<table cellpadding="5">
+	    		<tr>
+	    			<td>companyName:</td>
+	    			<td><input class="easyui-textbox" type="text" name="companyName" data-options="required:true"></input></td>
+	    		</tr>
+	    		<tr>
+	    			<td>comment:</td>
+	    			<td><input class="easyui-textbox" name="comment" data-options="multiline:true" style="height:60px"></input></td>
+	    		</tr>
+	    		<tr>
+	    			<td>SettleBeginDate:</td>
+	    			<td>
+	    		        <input class="easyui-datebox" name="settleBeginDate"></input>
+	    			</td>
+	    		</tr>
+	    		<tr>
+	    			<td>SettleBeginDate:</td>
+	    			<td>
+	    		        <input id="txtDate" type="text" />
+	    			</td>
+	    		</tr>
+	    	</table>
+	    </form>
+	    <div style="text-align:center;padding:5px">
+	    
+	    	<a href="javascript:void(0)" class="easyui-linkbutton" onclick="submitForm()">Submit</a>
+	    	<a href="javascript:void(0)" class="easyui-linkbutton" onclick="clearForm()">Clear</a>
+	    </div>
+	    </div>
+	</div>
+	<script type="text/javascript">
+	function submitForm(){
+//			$('#ff').form('submit');
+			$.messager.progress();	// display the progress bar
+			$('#ff').form('submit', {
+				url: '../../004/saveCompany.action',
+				onSubmit: function(){
+					var isValid = $(this).form('validate');
+					if (!isValid){
+						alert('data is invalid');
+						$.messager.progress('close');	// hide progress bar while the form is invalid
+					}
+					alert('data is valid');
+					return isValid;	// return false will stop the form submission
+				},
+				success: function(data){
+					$.messager.progress('close');	// hide progress bar while submit successfully
+					var obj = eval('(' + data + ')');
+					var result=obj.info;
+					alert('save company success');
+					alert(result);
+					window.location.href='./loginCompany.html'
+				}
+			});
+		}
+		function clearForm(){
+			alert("in this function");
+			$('#ff').form('clear');
+		}
+		</script>
+</body>
+</html>

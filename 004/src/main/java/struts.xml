@@ -1,0 +1,311 @@
+<?xml version="1.0" encoding="UTF-8" ?>  
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN" "http://struts.apache.org/dtds/struts-2.0.dtd"> 
+  <struts>  
+     <!-- struts的action配置文件 -->
+         <!-- 该属性指定需要Struts2处理的请求后缀，该属性的默认值是action，即所有匹配*.action的请求都由Struts2处理。
+        如果用户需要指定多个请求后缀，则多个后缀之间以英文逗号（,）隔开。 -->
+    <constant name="struts.action.extension" value="action" />
+    <!-- 设置浏览器是否缓存静态内容,默认值为true(生产环境下使用),开发阶段最好关闭 -->
+    <constant name="struts.serve.static.browserCache" value="false" />
+    <!-- 当struts的配置文件修改后,系统是否自动重新加载该文件,默认值为false(生产环境下使用),开发阶段最好打开 -->
+    <constant name="struts.configuration.xml.reload" value="true" />
+    <!-- 开发模式下使用,这样可以打印出更详细的错误信息 -->
+    <constant name="struts.devMode" value="true" />
+    <!-- 默认的视图主题 -->
+    <constant name="struts.ui.theme" value="simple" />
+    <!--解决乱码    -->
+    <constant name="struts.i18n.encoding" value="UTF-8" />
+    <!-- 指定允许上传的文件最大字节数。默认值是2097152(2M) -->
+    <constant name="struts.multipart.maxSize" value="10701096"/>
+    <!-- 设置上传文件的临时文件夹,默认使用javax.servlet.context.tempdir -->
+    <constant name="struts.multipart.saveDir " value="/upload" />  
+     <!-- 将action托管给spring -->  
+      <constant name="struts.objectFactory" value="spring"></constant>   
+     <!-- 所有的action都应该放在对应的package下 -->  
+     <package name="emp" extends="json-default" namespace="/004">  
+        <action name="getList" class="com.tiger.employees.employees.action.EmployeeAction" method="getList" >  
+            <!-- 定义逻辑视图和物理资源之间的映射 -->  
+            <result name="success">/pages/emp/ListAll.jsp</result>   
+        </action>
+        
+        <action name="queryEmp" class="com.tiger.employees.employees.action.EmployeeAction" method='queryEmp'>
+            <result type="json">
+                <param name="root">empList</param>
+            </result>
+        </action>
+          
+         <action name="queryEmpStr" class="com.tiger.employees.employees.action.EmployeeAction" method='queryEmpStr'>
+            <result type="json">
+                <param name="root">empMap</param>
+            </result>
+        </action> 
+          
+     </package> 
+     <!-- 科目的action -->
+      <package name="subject" extends="json-default" namespace="/subject">  
+          
+     <action name="generateTree" class="com.tiger.employees.subject.action.SubjectAction" method='generateTree'>
+            <result type="json">
+                <param name="root">dataList</param>
+            </result>
+        </action> 
+      <action name="forInsert" class="com.tiger.employees.subject.action.SubjectAction" method='forInsert'>
+            <!-- 定义逻辑视图和物理资源之间的映射 -->  
+            <result name="success">/pages/tree/forInsertTreeNode.jsp</result>   
+        </action> 
+        
+        <action name="showSubjectDetail" class="com.tiger.employees.subject.action.SubjectAction" method='showSubjectDetail'>
+            <!-- 定义逻辑视图和物理资源之间的映射 -->  
+            <result name="success">/pages/tree/forUpdateTreeNode.jsp</result>   
+        </action>
+        
+        <action name="saveSubject" class="com.tiger.employees.subject.action.SubjectAction" method='saveSubject'>
+            <result type="json">
+                <param name="root">dataMap</param>
+            </result>
+        </action>
+        
+        <action name="updateSubject" class="com.tiger.employees.subject.action.SubjectAction" method='updateSubject'>
+            <result type="json">
+                <param name="root">dataMap</param>
+            </result>
+        </action>   
+     </package>  
+     
+     <!-- 结帐的action -->
+     <package name="settleDetail" extends="json-default" namespace="/004">  
+          
+     <action name="queryDetails" class="com.tiger.employees.settledetail.action.SettleDetailAction" method='queryDetails'>
+            <result type="json">
+                <param name="root">detailMap</param>
+            </result>
+        </action> 
+        
+        <action name="querySubject4Details" class="com.tiger.employees.settledetail.action.SettleDetailAction" method='querySubject4Details'>
+            <result type="json">
+                <param name="root">subjects</param>
+            </result>
+        </action> 
+       <action name="saveSubjectDetails" class="com.tiger.employees.settledetail.action.SettleDetailAction" method='saveSubjectDetails'>
+            <result type="json">
+                <param name="root">detailMap</param>
+            </result>
+        </action> 
+     </package>  
+     
+      <package name="report" extends="json-default" namespace="/004">  
+         <action name="exportExcel" class="com.tiger.summary.report.test.action.ExcelAction" method="exportExcel"> 
+            <result name="success" type="stream"> 
+                <param name="contentType">application/vnd.ms-excel</param> 
+                <param name="contentDisposition">attachment;filename=${filename}</param> 
+                <param name="inputName">downloadStream</param> 
+            </result> 
+        </action> 
+          
+     </package>  
+     
+   <!-- 公司的action -->
+   <package name="company" extends="json-default" namespace="/company">
+
+        
+        <action name="saveCompany" class="com.tiger.employees.company.action.CompanyAction" method='saveCompany'>
+            <result type="json">
+                <param name="root">dataMap</param>
+            </result>
+        </action>
+        
+        <action name="getCompanies" class="com.tiger.employees.company.action.CompanyAction" method='getCompanies'>
+            <result type="json">
+                <param name="root">dataMapList</param>
+            </result>
+        </action>   
+        
+    <action name="doUpload" class="com.tiger.employees.company.action.CompanyAction" method='doUpload' >
+    	<result type="json">
+                <param name="root">dataMap</param>
+            </result>
+    	   <!--<result name="success">/pages/company/good_result.jsp</result>  -->
+	</action>  
+        
+     </package>  
+     
+     <package name="control" extends="json-default" namespace="/004">  
+   
+        <action name="registerCompany" class="com.tiger.employees.control.action.LoginAction" method='registerCompany'>
+            <result type="json">
+                <param name="root">dataMap</param>
+            </result>
+        </action>
+
+
+         
+     </package> 
+     
+      <package name="monthSettleProg" extends="json-default" namespace="/msp">
+
+          <action name="getBalanceSheetExcel" class="com.tiger.employees.monsettleprog.action.MonthSettleProgressAction" method="getBalanceSheetExcel">
+              <result name="success" type="stream">
+                  <param name="contentType">application/vnd.ms-excel</param>
+                  <param name="contentDisposition">attachment;filename=${filename}</param>
+                  <param name="inputName">downloadStream</param>
+              </result>
+          </action>
+
+		<action name="getProfitSheetExcel" class="com.tiger.employees.monsettleprog.action.MonthSettleProgressAction" method="getProfitSheetExcel">
+             <result name="success" type="stream">
+                 <param name="contentType">application/vnd.ms-excel</param>
+                 <param name="contentDisposition">attachment;filename=${filename}</param>
+                 <param name="inputName">downloadProfitStream</param>
+             </result>
+         </action>
+
+		<action name="getVSRExcel" class="com.tiger.employees.monsettleprog.action.MonthSettleProgressAction" method="getVSRExcel">
+             <result name="success" type="stream">
+                 <param name="contentType">application/vnd.ms-excel</param>
+                 <param name="contentDisposition">attachment;filename=${filename}</param>
+                 <param name="inputName">downloadProfitStream</param>
+             </result>
+         </action>
+
+
+          <action name="getMonSettleProgList" class="com.tiger.employees.monsettleprog.action.MonthSettleProgressAction" method='getMonSettleProgList'>
+            <result type="json">
+                <param name="root">dataList</param>
+            </result>
+          </action>
+        
+
+          <action name="endMonSettle" class="com.tiger.employees.monsettleprog.action.MonthSettleProgressAction" method='endMonSettle'>
+            <result type="json">
+                <param name="root">dataMap</param>
+            </result>
+          </action>
+        
+        <action name="addNewMonSettle" class="com.tiger.employees.monsettleprog.action.MonthSettleProgressAction" method='addNewMonSettle'>
+            <result type="json">
+                <param name="root">dataMap</param>
+            </result>
+        </action>
+
+
+        
+     </package> 
+     <!-- 凭证的action -->
+     <package name="voucher" extends="json-default" namespace="/v">  
+          
+     <action name="getVoucherList" class="com.tiger.employees.voucher.action.VoucherAction" method='getVoucherList'>
+            <result type="json">
+                <param name="root">dataList</param>
+            </result>
+        </action> 
+        
+        <action name="saveVoucher" class="com.tiger.employees.voucher.action.VoucherAction" method='saveVoucher'>
+            <result type="json">
+                <param name="root">dataMap</param>
+            </result>
+        </action>
+        
+        <action name="deleteVoucher" class="com.tiger.employees.voucher.action.VoucherAction" method='deleteVoucher'>
+            <result type="json">
+                <param name="root">dataMap</param>
+            </result>
+        </action> 
+        
+         <action name="updateVoucher" class="com.tiger.employees.voucher.action.VoucherAction" method='updateVoucher'>
+            <result type="json">
+                <param name="root">dataMap</param>
+            </result>
+        </action>
+        
+        <action name="testVoucher" class="com.tiger.employees.voucher.action.VoucherAction" method='testVoucher'>
+            <result type="json">
+                <param name="root">dataMap</param>
+            </result>
+        </action> 
+        
+     </package>  
+     
+     <!-- 凭证明细action -->
+     <package name="voucherDetail" extends="json-default" namespace="/vd">  
+          
+     <action name="queryVoucherDetails" class="com.tiger.employees.voucherdetail.action.VoucherDetailAction" method='queryVoucherDetails'>
+            <result type="json">
+                <param name="root">dataList</param>
+            </result>
+        </action> 
+        
+        <action name="saveVoucherDetails" class="com.tiger.employees.voucherdetail.action.VoucherDetailAction" method='saveVoucherDetails'>
+            <result type="json">
+                <param name="root">dataMap</param>
+            </result>
+        </action> 
+        
+        <action name="getVoucherInfo" class="com.tiger.employees.voucherdetail.action.VoucherDetailAction" method='getVoucherInfo'>
+            <result type="json">
+                <param name="root">dataMap</param>
+            </result>
+        </action>
+        
+        <action name="getVoucherSummaryExcel" class="com.tiger.employees.voucherdetail.action.VoucherDetailAction" method="getVoucherSummaryExcel"> 
+            <result name="success" type="stream"> 
+                <param name="contentType">application/vnd.ms-excel</param> 
+                <param name="contentDisposition">attachment;filename=${filename}</param> 
+                <param name="inputName">downloadStream</param> 
+            </result> 
+       </action>
+        
+     </package>
+     
+        <!-- 汇总报表action -->
+     <package name="balance" extends="json-default" namespace="/balance">  
+          
+     <action name="getSummaryReport" class="com.tiger.employees.balance.action.BalanceAction" method='getSummaryReport'>
+            <result type="json">
+                <param name="root">dataList</param>
+            </result>
+        </action> 
+        
+     <action name="getSummaryReportExcel" class="com.tiger.employees.balance.action.BalanceAction" method="getSummaryReportExcel"> 
+            <result name="success" type="stream"> 
+                <param name="contentType">application/vnd.ms-excel</param> 
+                <param name="contentDisposition">attachment;filename=${filename}</param> 
+                <param name="inputName">downloadStream</param> 
+            </result> 
+     </action>
+
+        
+     </package>
+     
+             <!-- 科目明细action -->
+     <package name="mondetail" extends="json-default" namespace="/mondetail">  
+          
+     <action name="getMonthDetailList" class="com.tiger.employees.monthdetail.action.MonthDetailAction" method='getMonthDetailList'>
+            <result type="json">
+                <param name="root">dataList</param>
+            </result>
+        </action> 
+        
+      <action name="getMonDetailList" class="com.tiger.employees.monthdetail.action.MonthDetailAction" method='getMonthDetailList'>
+            <result type="json">
+                <param name="root">dataList</param>
+            </result>
+        </action>
+        
+     <action name="getSubjectComboxData" class="com.tiger.employees.monthdetail.action.MonthDetailAction" method='getSubjectComboxData'>
+            <result type="json">
+                <param name="root">subjectList</param>
+            </result>
+        </action>
+        
+     <action name="getMonthDetailExcel" class="com.tiger.employees.monthdetail.action.MonthDetailAction" method="getMonthDetailExcel"> 
+            <result name="success" type="stream"> 
+                <param name="contentType">application/vnd.ms-excel</param> 
+                <param name="contentDisposition">attachment;filename=${filename}</param> 
+                <param name="inputName">downloadStream</param> 
+            </result> 
+     </action>
+        
+     </package>
+     
+  </struts> 

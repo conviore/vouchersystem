@@ -1,0 +1,45 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated Oct 29, 2014 4:58:45 PM by Hibernate Tools 3.4.0.CR1 -->
+<hibernate-mapping>
+    <class name="com.tiger.employees.voucher.po.Voucher" table="voucher" catalog="employees">
+        <id name="id" type="string">
+            <column name="id" length="40" />
+            <generator class="assigned" />
+        </id>
+        <property name="orgId" type="string">
+            <column name="org_id" length="40" />
+        </property>
+        <property name="voucherNo" type="string">
+            <column name="voucher_no" length="40" />
+        </property>
+        <property name="subjectId" type="string">
+            <column name="subject_id" length="40" />
+        </property>
+        <property name="debitSum" type="big_decimal">
+            <column name="debit_sum" precision="12" />
+        </property>
+        <property name="creditSum" type="big_decimal">
+            <column name="credit_sum" precision="12" />
+        </property>
+        <property name="diff" type="big_decimal">
+            <column name="diff" precision="12" />
+        </property>
+        <property name="debitSubjectCodes" type="string">
+            <column name="debit_subject_codes" length="200" />
+        </property>
+        <property name="creditSubjectCodes" type="string">
+            <column name="credit_subject_codes" length="200" />
+        </property>
+        <property name="settleTime" type="string">
+            <column name="settle_time" length="40" />
+        </property>
+        <property name="updateTime" type="string">
+            <column name="update_time" length="40" />
+        </property>
+        <property name="comment" type="string">
+            <column name="comment" length="200" />
+        </property>
+    </class>
+</hibernate-mapping>

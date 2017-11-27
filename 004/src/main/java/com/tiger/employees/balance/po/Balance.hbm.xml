@@ -1,0 +1,73 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated Oct 14, 2014 4:13:48 PM by Hibernate Tools 3.4.0.CR1 -->
+<hibernate-mapping>
+    <class name="com.tiger.employees.balance.po.Balance" table="balance" catalog="employees">
+        <id name="id" type="string">
+            <column name="id" length="40" />
+            <generator class="assigned" />
+        </id>
+        <property name="orgId" type="string">
+            <column name="org_id" length="40" />
+        </property>
+        <property name="settleTime" type="string">
+            <column name="settle_time" length="40" />
+        </property>
+        <property name="subjectId" type="string">
+            <column name="subject_id" length="40" />
+        </property>
+        <property name="subjectCode" type="string">
+            <column name="subject_code" length="40" />
+        </property>
+        <property name="subjectName" type="string">
+            <column name="subject_name" length="100" />
+        </property>
+        <property name="initMonDebit" type="big_decimal">
+            <column name="init_mon_debit" precision="12" not-null="true" />
+        </property>
+        <property name="initMonCredit" type="big_decimal">
+            <column name="init_mon_credit" precision="12" not-null="true" />
+        </property>
+        <property name="difference" type="big_decimal">
+            <column name="difference" precision="12" not-null="true" />
+        </property>
+        <property name="currentMonDebit" type="big_decimal">
+            <column name="current_mon_debit" precision="12" not-null="true" />
+        </property>
+        <property name="currentMonCredit" type="big_decimal">
+            <column name="current_mon_credit" precision="12" not-null="true" />
+        </property>
+        <property name="cumulativeDebit" type="big_decimal">
+            <column name="cumulative_debit" precision="12"  not-null="true" />
+        </property>
+        <property name="cumulativeCredit" type="big_decimal">
+            <column name="cumulative_credit" precision="12" not-null="true" />
+        </property>
+        <property name="finalMonDebit" type="big_decimal">
+            <column name="final_mon_debit" precision="12"  not-null="true" />
+        </property>
+        <property name="finalMonCredit" type="big_decimal">
+            <column name="final_mon_credit" precision="12"  not-null="true" />
+        </property>
+        <property name="updateTime" type="string">
+            <column name="update_time" length="40" />
+        </property>
+        <property name="comment" type="string">
+            <column name="comment" length="200" />
+        </property>
+        <property name="initBalance" type="big_decimal">
+            <column name="init_balance" precision="12" scale="2" not-null="true" />
+        </property>
+        <property name="endBalance" type="big_decimal">
+            <column name="end_Balance" precision="12" scale="2" not-null="true" />
+        </property>
+        <property name="accountDirection" type="java.lang.Integer">
+            <column name="account_direction" length="1" />
+        </property>
+        <property name="initYearBalance" type="big_decimal">
+            <column name="init_year_balance" precision="12" scale="2" not-null="true" />
+        </property>
+        
+    </class>
+</hibernate-mapping>

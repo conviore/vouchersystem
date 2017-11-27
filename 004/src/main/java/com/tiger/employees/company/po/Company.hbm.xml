@@ -1,0 +1,33 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated Sep 28, 2014 5:16:38 PM by Hibernate Tools 3.4.0.CR1 -->
+<hibernate-mapping>
+    <class name="com.tiger.employees.company.po.Company" table="company" catalog="employees">
+        <id name="id" type="string">
+            <column name="id" length="40" />
+            <generator class="assigned" />
+        </id>
+        <property name="companyCode" type="string">
+            <column name="company_code" length="40" />
+        </property>
+        <property name="companyName" type="string">
+            <column name="company_name" length="100" />
+        </property>
+        <property name="createTime" type="string">
+            <column name="create_time" length="40" />
+        </property>
+        <property name="updateTime" type="string">
+            <column name="update_time" length="40" />
+        </property>
+        <property name="comment" type="string">
+            <column name="comment" length="200" />
+        </property>
+        <property name="settleBeginDate" type="string">
+            <column name="settle_begin_date" length="50" />
+        </property>
+        <property name="status" type="string">
+            <column name="status" length="10" />
+        </property>
+    </class>
+</hibernate-mapping>

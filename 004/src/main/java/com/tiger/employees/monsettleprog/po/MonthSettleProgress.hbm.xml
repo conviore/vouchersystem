@@ -1,0 +1,33 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated Oct 25, 2014 7:37:27 AM by Hibernate Tools 3.4.0.CR1 -->
+<hibernate-mapping>
+    <class name="com.tiger.employees.monsettleprog.po.MonthSettleProgress" table="month_settle_progress" catalog="employees">
+        <id name="id" type="string">
+            <column name="id" length="40" />
+            <generator class="assigned" />
+        </id>
+        <property name="settleYear" type="string">
+            <column name="settle_year" length="40" />
+        </property>
+        <property name="settleMonth" type="string">
+            <column name="settle_month" length="40" />
+        </property>
+        <property name="status" type="string">
+            <column name="status" length="40" />
+        </property>
+        <property name="createTime" type="string">
+            <column name="create_time" length="40" />
+        </property>
+        <property name="updateTime" type="string">
+            <column name="update_time" length="40" />
+        </property>
+        <property name="comment" type="string">
+            <column name="comment" length="200" />
+        </property>
+        <property name="companyId" type="string">
+            <column name="company_id" length="40" />
+        </property>
+    </class>
+</hibernate-mapping>

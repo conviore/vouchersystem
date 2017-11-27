@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- 负责系统级配置 -->
+<beans xmlns="http://www.springframework.org/schema/beans" 
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+	xmlns:aop="http://www.springframework.org/schema/aop" 
+	xmlns:tx="http://www.springframework.org/schema/tx" 
+	xmlns:context="http://www.springframework.org/schema/context" 
+	xsi:schemaLocation="   http://www.springframework.org/schema/beans    
+		http://www.springframework.org/schema/beans/spring-beans-3.0.xsd   
+		http://www.springframework.org/schema/tx    
+		http://www.springframework.org/schema/tx/spring-tx-3.0.xsd   
+		http://www.springframework.org/schema/aop    
+		http://www.springframework.org/schema/aop/spring-aop-3.0.xsd   
+		http://www.springframework.org/schema/context   
+		http://www.springframework.org/schema/context/spring-context-3.0.xsd">
+		
+<bean id="employeesDao" class="com.tiger.employees.employees.dao.EmployeeDaoImpl">
+<property name="sessionFactory" ref="sessionFactory"></property>
+</bean>
+
+<bean id="employeeBo" class="com.tiger.employees.employees.bo.EmployeeBoImpl">
+</bean>
+
+<bean id="subjectDao" class="com.tiger.employees.subject.dao.SubjectDaoImpl">
+<property name="sessionFactory" ref="sessionFactory"></property>
+</bean>
+
+<bean id="subjectBo" class="com.tiger.employees.subject.bo.SubjectBoImpl">
+</bean>
+
+<bean id="settleDetailDao" class="com.tiger.employees.settledetail.dao.SettleDetailDaoImpl">
+<property name="sessionFactory" ref="sessionFactory"></property>
+</bean>
+
+<bean id="settleDetailBo" class="com.tiger.employees.settledetail.bo.SettleDetailImpl">
+</bean>
+
+<bean id="companyDao" class="com.tiger.employees.company.dao.CompanyDaoImpl">
+<property name="sessionFactory" ref="sessionFactory"></property>
+</bean>
+
+<bean id="companyBo" class="com.tiger.employees.company.bo.CompanyBoImpl">
+</bean>
+
+<bean id="balanceDao" class="com.tiger.employees.balance.dao.BalanceDaoImpl">
+<property name="sessionFactory" ref="sessionFactory"></property>
+</bean>
+
+<bean id="balanceBo" class="com.tiger.employees.balance.bo.BalanceBoImpl">
+</bean>
+
+<bean id="MonthSettleProgressDao" class="com.tiger.employees.monsettleprog.dao.MonthSettleProgressDaoImpl">
+<property name="sessionFactory" ref="sessionFactory"></property>
+</bean>
+
+<bean id="monthSettleProgressBo" class="com.tiger.employees.monsettleprog.bo.MonthSettleProgressBoImpl">
+</bean>
+
+<bean id="voucherDao" class="com.tiger.employees.voucher.dao.VoucherDaoImpl">
+<property name="sessionFactory" ref="sessionFactory"></property>
+</bean>
+
+<bean id="voucherBo" class="com.tiger.employees.voucher.bo.VoucherBoImpl">
+</bean>
+
+<bean id="voucherDetailDao" class="com.tiger.employees.voucherdetail.dao.VoucherDetailDaoImpl">
+<property name="sessionFactory" ref="sessionFactory"></property>
+</bean>
+
+<bean id="voucherDetailBo" class="com.tiger.employees.voucherdetail.bo.VoucherDetailBoImpl">
+</bean>
+
+<bean id="excelBo" class="com.tiger.summary.report.test.service.ExcelBoImpl">
+</bean>
+
+<bean id="monthDetailBo" class="com.tiger.employees.monthdetail.bo.MonthDetailBoImpl">
+</bean>
+
+<bean id="balanceItemDao" class="com.tiger.employees.balanceitem.dao.BalanceItemDaoImpl">
+<property name="sessionFactory" ref="sessionFactory"></property>
+</bean>
+
+	<bean id="profitItemDao" class="com.tiger.employees.profititem.dao.ProfitItemDaoImpl">
+		<property name="sessionFactory" ref="sessionFactory"></property>
+	</bean>
+
+</beans>

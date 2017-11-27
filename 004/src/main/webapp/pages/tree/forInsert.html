@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>Validate Form on Submit - jQuery EasyUI Demo</title>
+    <link rel="stylesheet" type="text/css" href="/004/js/jquery-easyui-1.4/themes/default/easyui.css">
+	<link rel="stylesheet" type="text/css" href="/004/js/jquery-easyui-1.4/themes/icon.css">
+   
+	<script type="text/javascript" src="/004/js/jquery-easyui-1.4/jquery.min.js"></script>
+	<script type="text/javascript" src="/004/js/jquery-easyui-1.4/jquery.easyui.min.js"></script>
+</head>
+<body>
+	<h2>插入一个新科目</h2>
+	<p>this is just a test</p>
+	<div style="margin:20px 0;"></div>
+	<div class="easyui-panel" title="New Topic" style="width:400px">
+		<div style="padding:10px 60px 20px 60px">
+	    <form id="ff" class="easyui-form" action='004/004/saveSubject.action' method="post" data-options="novalidate:true">
+	    	<table >
+	    		<tr>
+	    			<td>code:</td>
+	    			<td><input class="easyui-textbox" type="text" name="code" data-options="required:true"></input></td>
+	    		</tr>
+	    		<tr>
+	    			<td>Parent:</td>
+	    			<td><input class="easyui-textbox" type="text" name="parent" data-options="required:true"></input></td>
+	    		</tr>
+	    		<tr>
+	    			<td>Comment:</td>
+	    			<td><input class="easyui-textbox" name="comment" data-options="multiline:true" style="height:60px"></input></td>
+	    		</tr>
+	    	</table>
+	    </form>
+	    <div style="text-align:center;padding:5px">
+	    	<a href="javascript:void(0)" class="easyui-linkbutton" onclick="submitForm()">Submit</a>
+	    	<a href="javascript:void(0)" class="easyui-linkbutton" onclick="clearForm()">Clear</a>
+	    	<a href="javascript:void(0)" class="easyui-linkbutton" onclick="test()">test</a>
+	    </div>
+	    </div>
+	</div>
+	<script type="text/javascript">
+		function submitForm(){
+			alert("in this function");
+			$('#ff').form('submit',{
+				onSubmit:function(){
+					return $(this).form('enableValidation').form('validate');
+				},
+			 success:function(){
+				 alert('save success');
+				 $("#treeshow",parent.document.body).attr("src","/004/tree.html");
+				 $("#treeedit",parent.document.body).attr("src","");
+			    }
+			});
+		}
+		function clearForm(){
+			alert("in this function");
+			$('#ff').form('clear');
+		}
+		function test(){
+			$("#treeshow",parent.document.body).attr("src","/004/tree.html");
+		}
+	</script>
+</body>
+</html>

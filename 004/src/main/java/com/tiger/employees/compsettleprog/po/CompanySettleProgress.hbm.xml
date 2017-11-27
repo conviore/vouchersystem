@@ -1,0 +1,24 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated Sep 28, 2014 5:17:57 PM by Hibernate Tools 3.4.0.CR1 -->
+<hibernate-mapping>
+    <class name="com.tiger.employees.compsettleprog.po.CompanySettleProgress" table="company_settle_progress" catalog="employees">
+        <id name="id" type="string">
+            <column name="id" length="40" />
+            <generator class="assigned" />
+        </id>
+        <property name="companyId" type="string">
+            <column name="company_id" length="40" />
+        </property>
+        <property name="status" type="string">
+            <column name="status" length="40" />
+        </property>
+        <property name="createTime" type="string">
+            <column name="create_time" length="40" />
+        </property>
+        <property name="comment" type="string">
+            <column name="comment" length="200" />
+        </property>
+    </class>
+</hibernate-mapping>

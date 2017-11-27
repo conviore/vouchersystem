@@ -1,0 +1,43 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated Oct 29, 2014 5:18:09 PM by Hibernate Tools 3.4.0.CR1 -->
+<hibernate-mapping>
+    <class name="com.tiger.employees.voucherdetail.po.VoucherDetail" table="voucher_detail" catalog="employees">
+        <id name="id" type="string">
+            <column name="id" length="40" />
+            <generator class="assigned" />
+        </id>
+        <property name="orgId" type="string">
+            <column name="org_id" length="40" />
+        </property>
+        <property name="voucherId" type="string">
+            <column name="voucher_id" length="40" />
+        </property>
+        <property name="subjectId" type="string">
+            <column name="subject_id" length="40" />
+        </property>
+        <property name="debit" type="big_decimal">
+            <column name="debit" precision="12" />
+        </property>
+        <property name="credit" type="big_decimal">
+            <column name="credit" precision="12" />
+        </property>
+        <property name="settleTime" type="string">
+            <column name="settle_time" length="40" />
+        </property>
+        <property name="updateTime" type="string">
+            <column name="update_time" length="40" />
+        </property>
+        <property name="comment" type="string">
+            <column name="comment" length="200" />
+        </property>
+        <!-- 结算方式 -->
+        <property name="settleWay" type="string">
+            <column name="settle_way" length="200" />
+        </property>
+        <property name="subjectRootCode" type="string">
+            <column name="subject_root_code" length="40" />
+        </property>
+    </class>
+</hibernate-mapping>

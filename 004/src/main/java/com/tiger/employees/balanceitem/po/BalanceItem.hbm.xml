@@ -1,0 +1,37 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated Jan 27, 2015 11:20:52 AM by Hibernate Tools 3.4.0.CR1 -->
+<hibernate-mapping>
+    <class name="com.tiger.employees.balanceitem.po.BalanceItem" table="balance_item" catalog="employees">
+        <id name="id" type="string">
+            <column name="id" length="40" />
+            <generator class="assigned" />
+        </id>
+        <property name="balanceType" type="string">
+            <column name="balance_type" length="45" />
+        </property>
+        <property name="itemName" type="string">
+            <column name="item_name" length="200" />
+        </property>
+        <property name="relatedCode" type="string">
+            <column name="related_code" length="200" />
+        </property>
+        <property name="ifFomula" type="string">
+            <column name="if_fomula" length="45" />
+        </property>
+        <property name="fomula" type="string">
+            <column name="fomula" length="200" />
+        </property>
+        <property name="comment" type="string">
+            <column name="comment" length="200" />
+        </property>
+        <property name="itemType" type="string">
+            <column name="item_type" length="45" />
+        </property>
+        <property name="itemNo" type="string">
+            <column name="item_no" length="45" />
+        </property>
+    </class>
+
+</hibernate-mapping>

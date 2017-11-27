@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC 
+"-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+    <class name="com.tiger.employees.employees.po.Employees" 
+        table="employees" catalog="employees">
+ 
+        <id name="empNo" type="long">
+            <column name="emp_no" />
+            <generator class="identity" />
+        </id>
+        <property name="birthDate" type="date">
+            <column name="birth_date"  not-null="true" />
+        </property>
+
+        <property name="firstName" type="string">
+            <column name="first_name" length="14" not-null="true" />
+        </property>
+        <property name="gender" type="string">
+            <column name="gender" length="6"  />
+        </property>
+        <property name="hireDate" type="date">
+            <column name="hire_date"  not-null="true" />
+        </property>
+    </class>
+</hibernate-mapping>

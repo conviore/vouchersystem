@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-reverse-engineering PUBLIC "-//Hibernate/Hibernate Reverse Engineering DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-reverse-engineering-3.0.dtd" >
+
+<hibernate-reverse-engineering>
+	<table catalog="employees" name="company">
+		<column name="id"></column>
+		<column name="company_code"></column>
+		<column name="company_name"></column>
+		<column name="create_time"></column>
+		<column name="update_time"></column>
+		<column name="comment"></column>
+	</table>
+	<table catalog="employees" name="company_settle_progress">
+		<column name="id"></column>
+		<column name="company_id"></column>
+		<column name="status"></column>
+		<column name="create_time"></column>
+		<column name="comment"></column>
+	</table>
+</hibernate-reverse-engineering>

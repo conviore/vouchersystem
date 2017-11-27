@@ -1,0 +1,57 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated Aug 21, 2014 2:42:09 PM by Hibernate Tools 3.4.0.CR1 -->
+<hibernate-mapping>
+    <class name="com.tiger.employees.subject.po.Subject" table="subject" catalog="employees">
+        <id name="id" type="string">
+            <column name="id" length="40" />
+            <generator class="assigned" />
+        </id>
+        <property name="code" type="string">
+            <column name="code" length="40" />
+        </property>
+        <property name="parentCode" type="string">
+            <column name="parent_code" length="40" />
+        </property>
+        <property name="parentId" type="string">
+            <column name="parent_id" length="40" />
+        </property>
+        <property name="childLv1" type="string">
+            <column name="child_lv1" length="40" />
+        </property>
+        <property name="childLv2" type="string">
+            <column name="child_lv2" length="40" />
+        </property>
+        <property name="childLv3" type="string">
+            <column name="child_lv3" length="40" />
+        </property>
+        <property name="childLv4" type="string">
+            <column name="child_lv4" length="40" />
+        </property>
+        <property name="childLv5" type="string">
+            <column name="child_lv5" length="40" />
+        </property>
+        <property name="isLeaf" type="string">
+            <column name="is_leaf" length="40" />
+        </property>
+        <property name="status" type="string">
+            <column name="status" length="40" />
+        </property>
+        <property name="createTime" type="date">
+            <column name="create_time" length="10" />
+        </property>
+        <property name="updateTime" type="date">
+            <column name="update_time" length="10" />
+        </property>
+        <property name="comment" type="string">
+            <column name="comment" length="200" />
+        </property>
+        <property name="orgId" type="string">
+            <column name="org_id" length="40" />
+        </property>
+        <property name="accountDirection" type="java.lang.Integer">
+            <column name="accounting_direction" length="1" />
+        </property>
+    </class>
+</hibernate-mapping>

@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>show and edit the tree</title>
+</head>
+<body onload='aaa()'>
+
+<iframe id="treeshow" name="treeshow" src='tree.html' width = "200" height="500" ></iframe>
+<iframe id="treeedit" name="treeedit" src="" width = "480" height="500"></iframe>
+
+
+
+</body>
+<script type="text/javascript">
+function aaa()
+{
+  var grid = document.getElementById("treeshow");
+  window.resizeTo(grid.offsetWidth, grid.offsetHeight);
+  var grid2 = document.getElementById("treeedit");
+  window.resizeTo(grid2.offsetWidth, grid2.offsetHeight);
+}
+</script>
+</html>

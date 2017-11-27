@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+	<link rel="stylesheet" type="text/css" href="/004/js/jquery-easyui-1.4/themes/default/easyui.css">
+	<link rel="stylesheet" type="text/css" href="/004/js/jquery-easyui-1.4/themes/icon.css">
+   
+	<script type="text/javascript" src="/004/js/jquery-easyui-1.4/jquery.min.js"></script>
+	<script type="text/javascript" src="/004/js/jquery-easyui-1.4/jquery.easyui.min.js"></script>
+
+<title>Insert title here</title>
+</head>
+<body>
+<h2>Basic DataGrid</h2>
+	<p>The DataGrid is created from markup, no JavaScript code needed.</p>
+	<div style="margin:20px 0;"></div>
+	
+	<table class="easyui-datagrid" title="Basic DataGrid" style="width:700px;height:250px"
+			data-options="singleSelect:true,collapsible:true,url:'004/queryEmpStr.action'">
+		<thead>
+			<tr>
+				<th data-options="field:'empNo',width:80">emp NO</th>
+				<th data-options="field:'birthDate',width:100">birthdate</th>
+			</tr>
+		</thead>
+	</table>
+	<table id="test2"></table>  
+	<script type="text/javascript">
+	$(function(){     
+        $('#test2').datagrid({  
+             title:'emp table',//表格标题  
+             iconCls:'icon-save',//表格图标  
+             nowrap: false,//是否只显示一行，即文本过多是否省略部分。  
+             striped: true,  
+             url:'004/queryEmpStr.action', //action地址  
+            idField:'empId',  
+            frozenColumns:[[  
+            ]],  
+            columns:[[  
+                {field:'empId',title:'图标',width:150},  
+                {field:'firstname',title:'name',width:120},  
+                {field:'lastName',title:'surname'',width:120,sortable:true},  
+                  
+            ]],  
+            pagination:true, //包含分页  
+            rownumbers:true,  
+            singleSelect:true,  
+        });  
+        });  
+	</script>
+
+</body>
+
+</html>

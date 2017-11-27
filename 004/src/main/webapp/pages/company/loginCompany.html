@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>LOGIN YOUR COMPANY</title>
+    <link rel="stylesheet" type="text/css" href="/004/js/jquery-easyui-1.4/themes/default/easyui.css">
+	<link rel="stylesheet" type="text/css" href="/004/js/jquery-easyui-1.4/themes/icon.css">
+   
+	<script type="text/javascript" src="/004/js/jquery-easyui-1.4/jquery.min.js"></script>
+	<script type="text/javascript" src="/004/js/jquery-easyui-1.4/jquery.easyui.min.js"></script>
+<style type="text/css">
+a:link,a:visited{
+ text-decoration:none;  /*超链接无下划线*/
+}
+a:hover{
+ text-decoration:underline;  /*鼠标放上去有下划线*/
+}
+
+</style>
+</head>
+<body>  
+			<a href="/004/pages/company/insertCompany.html" class="easyui-linkbutton" onclick="submitForm()">ADD A COMPANY</a>
+			
+			<p>The form does not perform validation before being submitted.</p>
+	<div style="margin:20px 0;"></div>
+	<div class="easyui-panel" title="New Topic" style="width:400px">
+		<div style="padding:10px 60px 20px 60px">
+	    <form  id="ff"  class="easyui-form" method="post" >
+	    	<table cellpadding="5">
+	    		<tr>
+	    			<td>choose a company:</td>
+	    			<td><input name="companyId" class="easyui-combobox" id="language" name="language"
+			data-options="valueField:'id',textField:'companyName',url:'getCompanies.action'"></input></td>
+	    		</tr>
+	    	</table>
+	    </form>
+	    <div style="text-align:center;padding:5px">
+	    	<a href="javascript:void(0)" class="easyui-linkbutton" onclick="submitForm()">Submit</a>
+	    </div>
+	    </div>
+	    
+	</div>
+	<script type="text/javascript">
+	function submitForm(){
+//			$('#ff').form('submit');
+			$.messager.progress();	// display the progress bar
+			$('#ff').form('submit', {
+				url: '../../004/registerCompany.action',
+                //url: '../registerCompany.action',
+				onSubmit: function(){
+					var isValid = $(this).form('validate');
+					if (!isValid){
+						alert('data is invalid');
+						$.messager.progress('close');	// hide progress bar while the form is invalid
+					}
+					alert('data is valid');
+					return isValid;	// return false will stop the form submission
+				},
+				success: function(data){
+					$.messager.progress('close');	// hide progress bar while submit successfully
+					var obj = eval('(' + data + ')');
+					var result=obj.info;
+					alert('register company success');
+					alert(result);
+					window.location.href='/004/pages/welcome.jsp'
+				}
+			});
+		}
+		</script>
+</body>
+</html>

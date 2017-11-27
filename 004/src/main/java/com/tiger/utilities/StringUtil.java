@@ -1,0 +1,17 @@
+package com.tiger.utilities;
+
+public class StringUtil {
+
+	/**
+	 * 字符串为null或空串或空格时返回true
+	 * 
+	 * @param str
+	 * @return
+	 */
+	public static boolean isEmpty(String str) {
+		if ((str == null) || ("".equals(str)))
+			return true;
+        return str.trim().length() == 0;
+
+    }
+}
